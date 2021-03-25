@@ -1,0 +1,9 @@
+{
+    "demo": {
+        "app_function": "inz_irma_backed.backend.app",
+        "profile_name": "inzsandbox",
+        "project_name": "inz-irma-backen",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-inz-irma-backend"
+    }
+}
