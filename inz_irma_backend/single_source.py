@@ -3,6 +3,7 @@ This is module is going to be used to call SingleSource APIs
 """
 
 import os
+from urllib.parse import urljoin
 
 import requests
 
@@ -30,7 +31,7 @@ def _send_request(endpoint, method='POST', payload=None, custom_headers=None):
 
     response = requests.request(
         method,
-        SINGLE_SOURCE_URL + '/' + endpoint,
+        urljoin(SINGLE_SOURCE_URL, endpoint),
         headers=headers,
         json=payload,
     )
