@@ -1,4 +1,4 @@
-FROM python:3.7-slim AS prepare
+FROM python:3.8-slim AS prepare
 
 ENV PYTHONPATH=/app:$PYTHONPATH
 ENV PATH=/scripts:$PATH
@@ -17,7 +17,7 @@ COPY runserver.py /app/
 COPY scripts/ /scripts/
 COPY inz_irma_backend/ /app/inz_irma_backend
 
-# Make port 5000 available to the world outside this container
+# Make port 5050 available to the world outside this container
 EXPOSE 5050
 
 # Dev dependencies
