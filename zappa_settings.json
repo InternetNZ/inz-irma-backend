@@ -2,7 +2,6 @@
     "demo": {
         "aws_region": "ap-southeast-2",
         "app_function": "inz_irma_backend.backend.app",
-        "profile_name": "inzsandbox",
         "project_name": "inz-irma-backend",
         "runtime": "python3.8",
         "s3_bucket": "zappa-inz-irma-backend",
