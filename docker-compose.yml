@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./runserver.py:/app/runserver.py:cached
+      - ./zappa_settings.json:/app/zappa_settings.json:cached
+      - ./inz_irma_backend:/app/inz_irma_backend:cached
+      - ./requirements.txt:/app/requirements.txt:cached
+      - ./requirements.dev.txt:/app/requirements.dev.txt:cached
+      - ./scripts:/scripts:cached
+    restart: always
+    ports:
+      - '5050:5050'
+    env_file:
+      - .env
+    environment:
+      TZ: UTC
+      SINGLE_SOURCE_API_KEY: ${SINGLE_SOURCE_API_KEY}
+      SINGLE_SOURCE_URL: ${SINGLE_SOURCE_URL:-https://ekyc.centralityapp.com}
+    networks:
+      internetnz:
+        aliases:
+          - irma-backend.local.internetnz.nz
+
+networks:
+  internetnz:
+
