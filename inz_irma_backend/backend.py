@@ -29,7 +29,7 @@ def verify_driver_license():
 @app.route('/single-source/passports', methods=['POST'])
 def verify_passport():
     """
-    A wrapper on /password SingleSource API.
+    A wrapper on /passports SingleSource API.
     """
 
     response = single_source.call_driver_license_verification(
