@@ -27,7 +27,7 @@ PARSER.add_argument(
     '--zappa-settings',
     nargs='?',
     default='zappa_settings.json',
-    help='PostGIS database password'
+    help='Zappa config file'
 )
 
 ARGS = PARSER.parse_args()
