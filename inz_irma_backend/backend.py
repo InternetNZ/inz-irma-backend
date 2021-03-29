@@ -10,7 +10,7 @@ from inz_irma_backend import single_source, logger
 app = Flask(__name__)
 
 
-@app.route('/single-source/driver-licences', methods=['POST'])
+@app.route('/single-source/drivers-licences', methods=['POST'])
 def verify_driver_license():
     """
     A wrapper on /drivers-licences SingleSource API.

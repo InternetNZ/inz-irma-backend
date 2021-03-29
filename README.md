@@ -36,12 +36,12 @@ Below API endpoints from SingleSource can be called through INZ IRMA Backend.
 Is used to verify a driver licence by the given image. The mapped endpoint on the backend is:
 
 ```
-https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/driver-licences
+https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/drivers-licences
 ```
 
 A call sample:
 ```
-curl --request POST 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/driver-licences' \
+curl --request POST 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/drivers-licences' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY' \
   --data-raw '{
