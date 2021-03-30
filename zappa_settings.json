@@ -6,6 +6,7 @@
         "runtime": "python3.8",
         "s3_bucket": "zappa-inz-irma-backend",
         "api_key_required": true,
+        "timeout_seconds": 60,
         "aws_environment_variables": {
             "SINGLE_SOURCE_API_KEY": "",
             "SINGLE_SOURCE_URL": "https://ekyc.centralityapp.com"
