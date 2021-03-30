@@ -10,7 +10,7 @@ from inz_irma_backend import single_source, logger
 app = Flask(__name__)
 
 
-@app.route('/single-source/driver-licences', methods=['POST'])
+@app.route('/single-source/drivers-licences', methods=['POST'])
 def verify_driver_license():
     """
     A wrapper on /drivers-licences SingleSource API.
@@ -32,7 +32,7 @@ def verify_passport():
     A wrapper on /passports SingleSource API.
     """
 
-    response = single_source.call_driver_license_verification(
+    response = single_source.call_passport_verification(
         request.json['document_image'],
         request.json['country_code']
     )
