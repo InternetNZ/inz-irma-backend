@@ -61,7 +61,7 @@ def call_driver_license_verification(document_image, country_code):
 
 def call_passport_verification(document_image, country_code):
     """
-    Calls /passport endpoint from SingleSource to verify given passport and returns the response.
+    Calls /passports endpoint from SingleSource to verify given passport and returns the response.
 
     :param document_image: Image in base64-encoded format.
     :param country_code: The country code simplified to three letters using the ISO 3166 alpha-3 format.
@@ -74,7 +74,7 @@ def call_passport_verification(document_image, country_code):
         'documentImage': document_image,
     }
 
-    response = _send_request('passport', payload=payload)
+    response = _send_request('passports', payload=payload)
 
     return response
 
