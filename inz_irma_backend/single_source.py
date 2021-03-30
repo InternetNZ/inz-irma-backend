@@ -81,7 +81,7 @@ def call_passport_verification(document_image, country_code):
 
 def call_doughnut_verification(doughnut):
     """
-    Calls /doughnut from SingleSource to verify given doughnut and returns the response.
+    Calls /doughnuts from SingleSource to verify given doughnut and returns the response.
 
     :param doughnut: A doughnut which is previously received from another api.
 
