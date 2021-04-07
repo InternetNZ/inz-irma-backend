@@ -1,4 +1,4 @@
-FROM python:3.8-slim AS prepare
+FROM python:3.8-alpine AS prepare
 
 ENV PYTHONPATH=/app:$PYTHONPATH
 ENV PATH=/scripts:$PATH

@@ -14,7 +14,7 @@ services:
       - ./scripts:/scripts:cached
     restart: always
     ports:
-      - '5050:5050'
+      - '${API_PORT:-5050}:5050'
     env_file:
       - .env
     environment:
