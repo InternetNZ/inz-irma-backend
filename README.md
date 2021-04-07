@@ -64,7 +64,7 @@ curl --request POST 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com
   --header 'x-api-key: API_KEY' \
   --data-raw '{
      "country_code": "NZL",
-     "document_image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."
+     "document_image": "/9j/4AAQSkZJRgABAQAAAQABAAD..."
   }'
 ```
 
