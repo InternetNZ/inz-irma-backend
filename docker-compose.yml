@@ -21,7 +21,7 @@ services:
       TZ: UTC
       SINGLE_SOURCE_API_KEY: ${SINGLE_SOURCE_API_KEY}
       SINGLE_SOURCE_URL: ${SINGLE_SOURCE_URL:-https://ekyc.centralityapp.com}
-      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-http://localhost:8000}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
     networks:
       internetnz:
         aliases:

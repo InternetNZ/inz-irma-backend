@@ -6,14 +6,14 @@ environments=( demo )
 # Print script usage
 function usage {
     echo
-    echo "Usage is ${0} <environment> <single_source_api_key> <allowed_origin>"
+    echo "Usage is ${0} <environment> <single_source_api_key> <allowed_origins>"
     echo "Valid environments are:"
     for i in "${environments[@]}"
     do
         echo - $i
     done
     echo "single_source_api_key: Single Source API key"
-    echo "allowed_origin: Allowed origin to call the APIs"
+    echo "allowed_origins: Allowed origins to call the APIs"
     echo
     exit 1
 }
@@ -36,7 +36,7 @@ fi
 if [ -z "$2" ] || [ -z "$3" ]; then
     echo "Error: Single Source API Key and Allowed Origin are required."; usage
 else
-    python scripts/zappa-set-secrets.py "${current_env}" --single-source-api-key "$2" --allowed-origin "$3"
+    python scripts/zappa-set-secrets.py "${current_env}" --single-source-api-key "$2" --allowed-origins "$3"
 fi
 
 # Zappa deployment steps

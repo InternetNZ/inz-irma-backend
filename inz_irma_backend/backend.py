@@ -17,7 +17,7 @@ CORS(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-ALLOWED_ORIGIN = os.environ.get('ALLOWED_ORIGIN')
+ALLOWED_ORIGINS = os.environ.get('ALLOWED_ORIGINS', '')
 
 
 class InternalServerError(Exception):
@@ -109,7 +109,7 @@ def verify_doughnut(doughnut):
 @login_manager.request_loader
 def check_origin(api_request):
     """
-    Checks origin header to be matched by ALLOWED_ORIGIN.
+    Checks origin header to be matched by ALLOWED_ORIGINS.
     """
     logger.debug('Authorize api call by checking api call origin')
 
@@ -117,7 +117,7 @@ def check_origin(api_request):
 
     logger.debug('Origin: %s', origin)
 
-    if origin != ALLOWED_ORIGIN:
+    if origin not in ALLOWED_ORIGINS.split(','):
         return None
 
     return ApiUser(origin)

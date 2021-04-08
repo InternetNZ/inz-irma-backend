@@ -24,10 +24,10 @@ PARSER.add_argument(
 )
 
 PARSER.add_argument(
-    '--allowed-origin',
+    '--allowed-origins',
     nargs='?',
     default='',
-    help='Allowed origin to call the APIs'
+    help='Allowed origins to call the APIs'
 )
 
 PARSER.add_argument(
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     with open(ARGS.zappa_settings, 'r+') as f:
         data = json.load(f)
         data[ARGS.env]['aws_environment_variables']['SINGLE_SOURCE_API_KEY'] = ARGS.single_source_api_key
-        data[ARGS.env]['aws_environment_variables']['ALLOWED_ORIGIN'] = ARGS.allowed_origin
+        data[ARGS.env]['aws_environment_variables']['ALLOWED_ORIGINS'] = ARGS.allowed_origins
         f.seek(0)
         json.dump(data, f, indent=4)
         f.truncate()
