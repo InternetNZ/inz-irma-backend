@@ -34,7 +34,7 @@ if [ -z "${current_env}" ];
 fi
 
 if [ -z "$2" ] || [ -z "$3" ]; then
-    echo "Error: Single Source API Key and Allowed Origin are required."; usage
+    echo "Error: Single Source API Key and Allowed Origins are required."; usage
 else
     python scripts/zappa-set-secrets.py "${current_env}" --single-source-api-key "$2" --allowed-origins "$3"
 fi
