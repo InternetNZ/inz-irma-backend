@@ -3,13 +3,14 @@ The implementation of InternetNZ IRMA backend
 """
 import traceback
 
-from flask import Flask, jsonify
-from flask import request
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 from werkzeug.exceptions import HTTPException
 
 from inz_irma_backend import single_source, logger
 
 app = Flask(__name__)
+CORS(app)
 
 
 class InternalServerError(Exception):
