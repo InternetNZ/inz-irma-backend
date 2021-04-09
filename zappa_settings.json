@@ -3,6 +3,7 @@
         "api_key_required": true,
         "app_function": "inz_irma_backend.backend.app",
         "aws_environment_variables": {
+            "ALLOWED_ORIGINS": "",
             "SINGLE_SOURCE_API_KEY": "",
             "SINGLE_SOURCE_URL": "https://ekyc.centralityapp.com"
         },
