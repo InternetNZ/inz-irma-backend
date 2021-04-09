@@ -38,4 +38,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements.deploy.txt
-          scripts/zappa-deploy.sh demo ${{ secrets.SINGLE_SOURCE_API_KEY }} {{ secrets.ALLOWED_ORIGINS }}
+          scripts/zappa-deploy.sh demo ${{ secrets.SINGLE_SOURCE_API_KEY }} ${{ secrets.ALLOWED_ORIGINS }}
