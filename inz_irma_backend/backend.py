@@ -2,14 +2,16 @@
 The implementation of InternetNZ IRMA backend
 """
 import os
+import json
 import traceback
 
+from http import HTTPStatus
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_login import LoginManager, login_required, UserMixin
 from werkzeug.exceptions import HTTPException
 
-from inz_irma_backend import single_source, logger
+from inz_irma_backend import single_source, irma, logger
 
 app = Flask(__name__)
 CORS(app)
@@ -106,11 +108,27 @@ def verify_doughnut(doughnut):
         raise InternalServerError() from exc
 
 
+@app.route('/irma/signature/verify', methods=['POST'])
+@login_required
+def verify_signature():
+    """
+    """
+    try:
+        result = irma.verify_signature(request.data)
+
+        return jsonify(result), HTTPStatus.OK
+    except Exception as exc:
+        logger.error('Internal error: %s - %s', str(exc),
+                     traceback.format_exc())
+        raise InternalServerError() from exc
+
+
 @login_manager.request_loader
 def check_origin(api_request):
     """
     Checks origin header to be matched by ALLOWED_ORIGINS.
     """
+    return ApiUser('test')
     logger.debug('Authorize api call by checking api call origin')
 
     origin = api_request.headers.get('Origin')

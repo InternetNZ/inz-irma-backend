@@ -36,3 +36,10 @@ package-audit:       ## Run package audit check
 
 package-audit-local: ## Run package audit check using local machine applications
 	./scripts/package-audit.sh
+
+build-go: ## Builds go files
+	go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
+
+update-schemes: ## Update IRMA schemes
+	mkdir -p ./go/irma_configuration /
+	irma scheme download ./go/irma_configuration
