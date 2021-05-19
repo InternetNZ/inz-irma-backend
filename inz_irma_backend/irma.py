@@ -9,6 +9,10 @@ IRMA_SIGNATURE_VERIFY = cdll.LoadLibrary("./go/irma_signature_verify.so")
 
 def verify_signature(signature):
     """
+    Verify given signature by calling Verify function from irmago
+
+    :param signature: IRMA signature payload
+    :return: dict
     """
     IRMA_SIGNATURE_VERIFY.Verify.argtypes = [c_char_p]
     IRMA_SIGNATURE_VERIFY.Verify.restype = c_char_p

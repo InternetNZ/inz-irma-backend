@@ -112,6 +112,7 @@ def verify_doughnut(doughnut):
 @login_required
 def verify_signature():
     """
+    Verifies given IRMA signature and returns result in JSON format
     """
     try:
         result = irma.verify_signature(request.data)
