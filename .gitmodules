@@ -1,0 +1,3 @@
+[submodule "go/irma_configuration/irma-demo"]
+	path = go/irma_configuration/irma-demo
+	url = https://github.com/privacybydesign/irma-demo-schememanager
