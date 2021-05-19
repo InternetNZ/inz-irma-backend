@@ -2,7 +2,7 @@
 A module to implement IRMA functionalities
 """
 import json
-from ctypes import *
+from ctypes import cdll, c_char_p
 
 IRMA_SIGNATURE_VERIFY = cdll.LoadLibrary("./go/irma_signature_verify.so")
 

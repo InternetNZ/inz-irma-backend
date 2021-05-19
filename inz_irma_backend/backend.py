@@ -2,7 +2,6 @@
 The implementation of InternetNZ IRMA backend
 """
 import os
-import json
 import traceback
 
 from http import HTTPStatus
@@ -129,7 +128,6 @@ def check_origin(api_request):
     """
     Checks origin header to be matched by ALLOWED_ORIGINS.
     """
-    return ApiUser('test')
     logger.debug('Authorize api call by checking api call origin')
 
     origin = api_request.headers.get('Origin')
