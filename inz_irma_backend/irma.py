@@ -2,9 +2,11 @@
 A module to implement IRMA functionalities
 """
 import json
+import os
 from ctypes import cdll, c_char_p
 
-IRMA_SIGNATURE_VERIFY = cdll.LoadLibrary("./go/irma_signature_verify.so")
+GO_PATH = os.path.join(os.getcwd(), 'go/irma_signature_verify.so')
+IRMA_SIGNATURE_VERIFY = cdll.LoadLibrary(GO_PATH)
 
 
 def verify_signature(signature):
