@@ -1,49 +1,49 @@
-help:                ## Show this help.
+help:                 ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-build:               ## Create and start container
+build:                ## Create and start container
 	docker-compose up --build -d
 
-start:               ## Start the container
+start:                ## Start the container
 	docker-compose start
 
-up-nd:	             ## Up non-detached
+up-nd:	              ## Up non-detached
 	docker-compose up
 
-restart:             ## Restart the container
+restart:              ## Restart the container
 	docker-compose restart
 
-stop:                ## Stop the container
+stop:                 ## Stop the container
 	docker-compose stop
 
-down:                ## Stop and remove the container
+down:                 ## Stop and remove the container
 	docker-compose down
 
-lint:                ## Run linter
+lint:                 ## Run linter
 	docker-compose exec backend bash -c '/scripts/linter.sh'
 
-lint-local:          ## Run linter using local machine applications
+lint-local:           ## Run linter using local machine applications
 	./scripts/linter.sh
 
-security:            ## Run security check
+security:             ## Run security check
 	docker-compose exec backend bash -c '/scripts/code-security-check.sh'
 
-security-local:      ## Run security check using local machine applications
+security-local:       ## Run security check using local machine applications
 	./scripts/code-security-check.sh
 
-package-audit:       ## Run package audit check
+package-audit:        ## Run package audit check
 	docker-compose exec backend bash -c '/scripts/package-audit.sh'
 
-package-audit-local: ## Run package audit check using local machine applications
+package-audit-local:  ## Run package audit check using local machine applications
 	./scripts/package-audit.sh
 
-build-go: ## Builds go files in container
+build-go:             ## Builds go files in container
 	docker-compose exec backend bash -c 'go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go'
 
-build-go-local: ## Builds go files in local
+build-go-local:       ## Builds go files in local
 	go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
 
-update-schemes: ## Update IRMA schemes in container
+update-schemes:       ## Update IRMA schemes in container
 	docker-compose exec backend bash -c 'mkdir -p ./go/irma_configuration && irma scheme download ./go/irma_configuration'
 
 update-schemes-local: ## Update IRMA schemes in local
