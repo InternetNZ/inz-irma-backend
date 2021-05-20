@@ -27,6 +27,23 @@ python ./runserver.py
 
 Source should be accessible on http://localhost:5050
 
+### Sign Verification
+We have a small Go app as a wrapper on `irmago` libs to call `Verify` function in order to verify signatures.
+Use below command to build the Go app:
+```
+# go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
+make build-go
+```
+
+Also, make sure to download the submodules (irma-demo-schememanager):
+```
+# When you clone the repo
+git clone --recurse-submodules https://github.com/InternetNZ/inz-irma-backend.git
+
+# Load the submodules
+git submodule update --init --recursive
+```
+
 ## SingleSource API endpoints
 Below API endpoints from SingleSource can be called through INZ IRMA Backend.
 
@@ -39,7 +56,7 @@ Is used to verify a driver licence by the given image. The mapped endpoint on th
 https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/drivers-licences
 ```
 
-A call sample:
+A sample api call:
 ```
 curl --request POST 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/drivers-licences' \
   --header 'Content-Type: application/json' \
@@ -57,7 +74,7 @@ Is used to verify a passport by the given image. The mapped endpoint on the back
 https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/passports
 ```
 
-A call sample:
+A sample api call:
 ```
 curl --request POST 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/passports' \
   --header 'Content-Type: application/json' \
@@ -75,11 +92,19 @@ Is used to verify a doughnut and  get relevant information from the doughnut. Th
 https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/doughnuts/{doughnut}
 ```
 
-A call sample:
+A sample api call:
 ```
 curl --request GET 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/single-source/doughnuts/EQe123312' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: API_KEY'
+```
+
+## IRMA API endpoints
+### /irma/signature/verify
+This API endpoint is used to verify an IRMA signature. It receives a signature payload for the input.
+
+```
+https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/irma/signature/verify'
 ```
 
 ## Deployment
