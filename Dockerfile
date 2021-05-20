@@ -38,8 +38,7 @@ COPY go.mod ./
 COPY go.sum ./
 COPY go/ /app/go/
 
-RUN go mod download \
-    && go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
+RUN go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
 
 # Make port 5050 available to the world outside this container
 EXPOSE 5050
