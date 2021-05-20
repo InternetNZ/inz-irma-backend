@@ -41,7 +41,7 @@ build-go: ## Builds go files in container
 	docker-compose exec backend bash -c 'go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go'
 
 build-go-local: ## Builds go files in local
-	go build -o /app/go/irma_signature_verify.so -buildmode=c-shared /app/go/irma_signature_verify.go
+	go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
 
 update-schemes: ## Update IRMA schemes in container
 	docker-compose exec backend bash -c 'mkdir -p ./go/irma_configuration && irma scheme download ./go/irma_configuration'
