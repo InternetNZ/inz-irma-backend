@@ -21,8 +21,8 @@ def verify_signature(signature):
 
     result = IRMA_SIGNATURE_VERIFY.Verify(c_char_p(signature))
 
-    result_json = result.decode('utf8')
-    result_dic = json.loads(result_json)
+    result_as_unicode = result.decode('utf8')
+    result_dic = json.loads(result_as_unicode)
 
     if 'error' in result_dic:
         raise Exception(result_dic.get('error'))
