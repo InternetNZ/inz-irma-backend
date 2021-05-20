@@ -26,20 +26,26 @@ lint-local:          ## Run linter using local machine applications
 	./scripts/linter.sh
 
 security:            ## Run security check
-	docker-compose exec api bash -c '/scripts/code-security-check.sh'
+	docker-compose exec backend bash -c '/scripts/code-security-check.sh'
 
 security-local:      ## Run security check using local machine applications
 	./scripts/code-security-check.sh
 
 package-audit:       ## Run package audit check
-	docker-compose exec api bash -c '/scripts/package-audit.sh'
+	docker-compose exec backend bash -c '/scripts/package-audit.sh'
 
 package-audit-local: ## Run package audit check using local machine applications
 	./scripts/package-audit.sh
 
-build-go: ## Builds go files
-	go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
+build-go: ## Builds go files in container
+	docker-compose exec backend bash -c 'go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go'
 
-update-schemes: ## Update IRMA schemes
+build-go-local: ## Builds go files in local
+	go build -o /app/go/irma_signature_verify.so -buildmode=c-shared /app/go/irma_signature_verify.go
+
+update-schemes: ## Update IRMA schemes in container
+	docker-compose exec backend bash -c 'mkdir -p ./go/irma_configuration && irma scheme download ./go/irma_configuration'
+
+update-schemes-local: ## Update IRMA schemes in local
 	mkdir -p ./go/irma_configuration /
 	irma scheme download ./go/irma_configuration
