@@ -101,7 +101,7 @@ curl --request GET 'https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/
 
 ## IRMA API endpoints
 ### /irma/signature/verify
-This API endpoint is used to verify an IRMA signature. It receives a signature payload for the input.
+This API endpoint is used to verify an IRMA signature. It receives a [signature payload](https://internetnz.atlassian.net/wiki/spaces/RCENG/pages/1077870621/IRMA+-+Feature+-+Attribute-based+Signature#Example-of-a-signing-response) for the input.
 
 ```
 https://f9emnttxd6.execute-api.ap-southeast-2.amazonaws.com/demo/irma/signature/verify'
