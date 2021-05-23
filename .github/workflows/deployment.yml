@@ -8,10 +8,16 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - name: Set up Golang 1.16
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -38,4 +44,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements.deploy.txt
+          go build -o ./go/irma_signature_verify.so -buildmode=c-shared ./go/irma_signature_verify.go
           scripts/zappa-deploy.sh demo ${{ secrets.SINGLE_SOURCE_API_KEY }} ${{ secrets.ALLOWED_ORIGINS }}
